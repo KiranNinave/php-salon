@@ -107,8 +107,18 @@
 								</div>
 							</div>
 						</div>
-					
+						<div class="col-md-6">
+							<div class="widget">
+								<h3 class="widget-title">Newsletter</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident et praesentium </p>
+								<form action="#" class="subscribe-form">
+									<input type="email" placeholder="Enter our email...">
+									<input type="submit" value="Sign up">
+								</form>
+							</div>
+						</div>
 					</div>
+					
 
 				
 				</div>

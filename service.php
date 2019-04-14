@@ -44,11 +44,10 @@
     <div id="site-content">
       <header class="site-header">
         <div class="container">
-          <a id="branding" href="index.html">
+          <a id="branding" href="index.php">
             <img src="images/logo.png" alt="Company name" class="logo" />
             <div class="logo-copy">
-              <h1 class="site-title">Company Name</h1>
-              <small class="site-description">Slogan goes here</small>
+             
             </div>
           </a>
           <!-- #branding -->
@@ -79,20 +78,7 @@
         <div class="page">
           <div class="container">
             <p>
-              Fusce nec congue diam. Maecenas condimentum porttitor nibh in
-              dignissim. Maecenas dictum felis id suscipit facilisis. Quisque et
-              ipsum eleifend, commodo tellus at, ultrices purus. Suspendisse
-              bibendum diam et tortor sodales sagittis. Phasellus rutrum justo
-              libero, in gravida sem laoreet in. Aenean sed elit nec felis
-              elementum scelerisque sit amet nec leo. Curabitur ipsum justo,
-              laoreet quis feugiat at, blandit vel mauris. Vivamus luctus
-              placerat nibh quis tempus. Nunc molestie, mi et suscipit
-              vulputate, sem est rhoncus arcu, a vestibulum nunc magna ac
-              tortor. Sed malesuada quis sem in tincidunt. Sed cursus enim orci,
-              vitae vulputate est condimentum pharetra. Curabitur pretium est
-              quis venenatis pharetra. Vestibulum a leo at quam rutrum
-              vestibulum. Aenean tincidunt tellus quis tortor feugiat, rutrum
-              sollicitudin .
+            When you invest your time, you make a goal and a decision of something that you want to accomplish. Whether it's make good grades in school, be a good athlete, be a good person, go down and do some community service and help somebody who's in need, whatever it is you choose to do, you're investing your time in that.
             </p>
 
             <div class="row">
@@ -187,36 +173,28 @@
                 <div class="price-list">
                   <h2 class="section-title">Products</h2>
                   <ul class="prices">
-                    <li>
-                      Maecenas dictum felis id suscipit facilisis<span
-                        class="price"
-                        >$50</span
-                      >
-                    </li>
-                    <li>
-                      Maecenas dictum felis id suscipit facilisis<span
-                        class="price"
-                        >$50</span
-                      >
-                    </li>
-                    <li>
-                      Maecenas dictum felis id suscipit facilisis<span
-                        class="price"
-                        >$50</span
-                      >
-                    </li>
-                    <li>
-                      Maecenas dictum felis id suscipit facilisis<span
-                        class="price"
-                        >$50</span
-                      >
-                    </li>
-                    <li>
-                      Maecenas dictum felis id suscipit facilisis<span
-                        class="price"
-                        >$50</span
-                      >
-                    </li>
+                  <?php 
+
+                    $query2 = "SELECT * FROM product WHERE salon_id=$id";
+                    $result2 = mysqli_query($conn, $query2);
+
+                    if($result2){
+                      while($row2 = mysqli_fetch_array($result2)){
+                        echo '
+                        <li>
+                          '.$row2[1].'
+                        <span
+                          class="price"
+                          >Rs. '.$row2[2].'</span
+                        >
+                      </li>
+                        ';
+                      }
+                    }
+                    else{
+                      echo "<h1>error! , fail to retrive data</h1> !";
+                    }
+                  ?>
                   </ul>
                 </div>
               </div>
@@ -257,8 +235,7 @@
               <div class="widget">
                 <h3 class="widget-title">Social Media</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Provident et praesentium
+                Focus on how to be social, not on how to do social.
                 </p>
                 <div class="social-links">
                   <a href="#"><i class="fa fa-facebook"></i></a>

@@ -44,11 +44,10 @@
     <div id="site-content">
       <header class="site-header">
         <div class="container">
-          <a id="branding" href="index.html">
+          <a id="branding" href="index.php">
             <img src="images/logo.png" alt="Company name" class="logo" />
             <div class="logo-copy">
-              <h1 class="site-title">Company Name</h1>
-              <small class="site-description">Slogan goes here</small>
+           
             </div>
           </a>
           <!-- #branding -->
@@ -79,29 +78,25 @@
         <div class="page">
           <div class="container">
             <p>
-              Omnis iste natus error sit voluptatem doloremque laudantium totam
-              rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi
-              architecto Omnis iste natus error sit voluptatem doloremque
-              laudantium totam rem aperiam eaque ipsa quae ab illo inventore
-              veritatis et quasi architecto iste natus error sit voluptatem
-              doloremque laudantium totam rem aperiam eaque ipsa quae ab illo
-              inventore veritatis et quasi architecto
+              you can contact us, to schedule your appointment!, once you submit your form we will contact you on given email, so please make sure that your email is correct. we will always try hard to get you the best deals!
             </p>
 
             <div class="row">
               <div class="col-md-8">
-                <form action="#" class="contact-form">
-                  <input type="text" id="name" placeholder="Name..." />
-                  <input type="text" id="email" placeholder="Email..." />
-                  <input type="text" id="website" placeholder="Website..." />
+                <form action="add_appointment.php?id=<?php echo $id ?>" class="contact-form" method="post">
+                  <input type="text" name="name" require id="name" placeholder="Name..." />
+                  <input type="text" name="email" require id="email" placeholder="Email..." />
+                  <input type="date" name="date" require id="website" placeholder="Date..." />
+                  <input type="time" name="time" require id="time" placeholder="Time..." />
                   <textarea
-                    name=""
+                    name="msg"
                     id="message"
                     placeholder="Message..."
+                    require
                   ></textarea>
                   <div class="text-right">
                     <button class="button large" type="submit">
-                      book
+                      request appointment
                     </button>
                   </div>
                 </form>
@@ -143,8 +138,7 @@
               <div class="widget">
                 <h3 class="widget-title">Social Media</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Provident et praesentium
+                Focus on how to be social, not on how to do social.
                 </p>
                 <div class="social-links">
                   <a href="#"><i class="fa fa-facebook"></i></a>

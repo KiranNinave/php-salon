@@ -1,5 +1,7 @@
 <?php
   require('php/connect.php');
+
+  session_start();
 ?>
 <html>
 <head>
@@ -81,6 +83,79 @@
           }
          ?>
         <a class="btn btn-primary" href="add_employee.php?id=<?php echo $id ?>">add</a>
+
+        <hr />
+        <h1>Products</h1>
+        <?php
+          $query = "SELECT * FROM product WHERE salon_id=$id";
+          $result = mysqli_query($conn, $query);
+          if(!$result){
+            echo "unable to fetch results";
+          }
+          else{
+            echo '
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">name</th>
+                  <th scope="col">price</th>
+                </tr>
+              </thead>
+              <tbody>
+            ';
+            while($row = mysqli_fetch_array($result)){
+              echo '
+              <tr>
+                <th scope="row">'. $row[0] .'</th>
+                <td><a href="update_product.php?id='.$row[0].'" >'. $row[1].'</a></td>
+                <td>'.$row[2].'</td>
+              </tr>
+              ';
+            }
+            echo '</tbody></table>';
+          }
+         ?>
+        <a class="btn btn-primary" href="add_product.php?id=<?php echo $id ?>">add</a>
+
+        <hr />
+        <h1>Appointments</h1>
+        <?php 
+          $query = "SELECT * FROM appointment WHERE salon_id=$id";
+          $result = mysqli_query($conn, $query);
+          if(!$result){
+            echo "unable to fetch results";
+          }
+          else{
+            echo '
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">name</th>
+                  <th scope="col">email</th>
+                  <th scope="col">date</th>
+                  <th scope="col">time</th>
+                  <th scope="col">message</th>
+                </tr>
+              </thead>
+              <tbody>
+            ';
+            while($row = mysqli_fetch_array($result)){
+              echo '
+              <tr>
+                <th scope="row">'. $row[0] .'</th>
+                <td><a href="view_appointment.php?id='.$row[0].'" >'. $row[1].'</a></td>
+                <td>'.$row[2].'</td>
+                <td>'.$row[3].'</td>
+                <td>'.$row[4].'</td>
+                <td>'.$row[5].'</td>
+              </tr>
+              ';
+            }
+            echo '</tbody></table>';
+          }
+        ?>
   </div>
 </body>
 <html>

@@ -45,7 +45,7 @@
     <div id="site-content">
       <header class="site-header">
         <div class="container">
-          <a id="branding" href="index.html">
+          <a id="branding" href="index.php">
             <img src="images/logo.png" alt="Company name" class="logo" />
             <div class="logo-copy">
               <h1 class="site-title"><?php echo $row[1] ?></h1>
@@ -188,6 +188,7 @@
             <!-- .row -->
           </div>
           <!-- .container -->
+          
         </div>
         <!-- .fullwidth-block.team-section -->
 
@@ -208,6 +209,43 @@
           </div>
         </div>
         <!-- .fullwidth-block.information-section -->
+
+        <div class="container">
+            <h2 class="section-title">Reviews</h2>
+            <div class="row">
+              <?php
+                $query2 = "SELECT * FROM review WHERE salon_id=$id";
+                $result2 = mysqli_query($conn, $query2);
+                if($result2){
+                  while($row2 = mysqli_fetch_array($result2)){
+                    echo '
+                    <div class="col-md-3">
+                    <div class="team">
+                      <h3 class="team-name">'.$row2[1].'</h3>
+                      <p>
+                        '.$row2[2].'
+                      </p>
+                      <div class="social-links">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                    ';
+                  }
+                }
+                else{
+                  echo "<h1>Employee retrival failed!</h1>";
+                }
+              ?>
+              
+              
+            
+              
+            </div>
+            <!-- .row -->
+          </div>
       </main>
 
       <footer class="site-footer">
@@ -237,8 +275,7 @@
               <div class="widget">
                 <h3 class="widget-title">Social Media</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Provident et praesentium
+                Focus on how to be social, not on how to do social.
                 </p>
                 <div class="social-links">
                   <a href="#"><i class="fa fa-facebook"></i></a>
@@ -248,6 +285,20 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-6">
+							<div class="widget">
+								<h3 class="widget-title">Review</h3>
+								<form action="add_review.php?id=<?php echo $id ?>" method="post" >
+                <div class="subscribe-form" >
+                <input type="text" name="comment" require placeholder="Enter your review or comment...">
+                </div>
+                <div class="subscribe-form">
+                  <input type="email" name="email" require placeholder="Enter your email...">
+                  <input type="submit" value="add">
+                </div>
+								</form>
+							</div>
+						</div>
           </div>
         </div>
       </footer>

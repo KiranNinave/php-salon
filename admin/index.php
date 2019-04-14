@@ -1,5 +1,21 @@
 <?php
   require('php/connect.php');
+
+  if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if($username == 'admin' && $password == 'admin'){
+      session_start();
+      $_SESSION['username'] = $username;
+    }
+    else{
+      header("location: login.php");
+    }
+  }
+  else{
+    header("location: login.php");
+  }
 ?>
 <html>
 <head>
@@ -17,10 +33,10 @@
         <input type="text" required placeholder="salon name" name="salon_name" class="form-control" />
       </p>
       <p>
-        <textarea class="form-control" required placeholder="description" name="salon_description"></textarea>
+        <input type="text" class="form-control" required placeholder="description" name="salon_description" />
       </p>
       <p>
-        <textarea class="form-control" required placeholder="address" name="store_address"></textarea>
+        <input type="text" class="form-control" required placeholder="address" name="store_address" />
       </p>
       <p>
         <input type="number" required class="form-control" placeholder="contact no" name="store_contact" ></textarea>
