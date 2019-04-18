@@ -1,21 +1,13 @@
 <?php
+  session_start();
   require('php/connect.php');
-
-  if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    if($username == 'admin' && $password == 'admin'){
-      session_start();
-      $_SESSION['username'] = $username;
-    }
-    else{
-      header("location: login.php");
-    }
+  if($_SESSION['username'] == 'admin'){
+    
   }
   else{
-    header("location: login.php");
+    header('location: login.php');
   }
+
 ?>
 <html>
 <head>
@@ -81,6 +73,8 @@
             echo '</tbody></table>';
           }
          ?>
+
+         <p align="center" > <a href="logout.php" class="btn btn-primary" > Logout </a> </p>
   </div>
 
 </body>
